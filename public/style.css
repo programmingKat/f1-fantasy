@@ -1,0 +1,20 @@
+:root{
+--light-bronze: #cb997eff;
+--powder-petal: #eddcd2ff;
+--linen: #fff1e6ff;
+--dry-sage: #a5a58dff;
+--olive-wood: #826e5aff;
+}
+
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  font-family: 'Dosis', sans-serif ;
+}
+img{
+  height: 200px;
+}
+
+h1, h2, h3{
+  font-family: 'Spectral', 'Times New Roman', Times, serif;
+}

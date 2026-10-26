@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Bookshelf</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="page-header text-center">
+            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        </div>
+
+        <div class="row">
+
+            <!-- LOCAL INFORMATION -->
+            <div class="col-sm-6">
+                <div class="well">
+                    <h3><span class="fa fa-user"></span> Local</h3>
+
+                    <% if (user.local.email) { %>
+                        <p>
+                            <strong>id</strong>: <%= user._id %><br>
+                                <strong>email</strong>: <%= user.local.email %><br>
+                                    <strong>password</strong>:
+                        </p>
+
+                        <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                        <% } else { %>
+                            <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                            <% } %>
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <h3>Your Books</h3>
+                <ul class="messages">
+                    <% for(var i=0; i<books.length; i++) {%>
+                        <li class="message">
+
+                            <span data-user-id="<%= books[i]._id %>">
+                                <%= books[i].title %>
+                            </span>
+                            <span>
+                                <%= books[i].author %>
+                            </span>
+
+                            <span>
+                                <input type="range" class="rate" id="rating" name="rating" min="0" max="10" />
+                            </span>
+                            <button class="trash"  data-book-id="<%= books[i]._id %>">🚮</button>
+                            
+                            <span>
+                                <%= books[i].rating %>
+                            </span>
+                            <!-- </i> -->
+                        </li>
+                        <% } %>
+                </ul>
+
+                <h2>Add a book</h2>
+                <% if (user.local.email) { %>
+
+                    <!-- Title
+                    	Author
+                    	ISBN - Optional
+                    	Date started
+                        Status - Not read , In Progress, Finished
+                    	
+                    	Genre
+                    
+                        in update:
+                    	Rating  1/10 or 1-5? -->
+                    <!-- Date Finished -->
+
+                    <form action="/myBooks" method="POST">
+                        <input type="text" value="<%= user.local.email %>" name="name" hidden>
+                        <fieldset>
+                            <legend>Basics !</legend>
+                            <input type="text" placeholder="Book Title" name="title">
+                            <input type="text" placeholder="Author" name="author">
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Progress</legend>
+                            <div>
+                                <input type="radio" id="notRead" name="progress" value="notRead" checked />
+                                <label for="notRead">Have not started reading</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="inProgress" name="progress" value="inProgress" />
+                                <label for="inProgress">Currently reading this</label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="read" name="progress" value="read" />
+                                <label for="read">Finished this book!</label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Dates!</legend>
+                            <label for="startDate">Start Date!</label>
+                            <input type="date" id="startDate" name="startDate">
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Show off</legend>
+                            <div>
+                                <input type="checkbox" id="displayBook" name="displayBook" checked>
+                                <label for="displayBook">Display on bookshelf</label>
+                            </div>
+                        </fieldset>
+                    <!--  -->
+
+                        <button type="submit">Submit</button>
+                    </form>
+            </div>
+            <% } %>
+
+        </div>
+
+        <script src="main.js"></script>
+
+</body>
+
+</html>
