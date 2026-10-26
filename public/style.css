@@ -1,20 +1,24 @@
-:root{
---light-bronze: #cb997eff;
---powder-petal: #eddcd2ff;
---linen: #fff1e6ff;
---dry-sage: #a5a58dff;
---olive-wood: #826e5aff;
+:root {
+  /* F1-inspired palette */
+  --ferarri-red: #B83A43;
+  ---light-black: #242629;
+  --light-white: #F7F7F5;
+  --light-grey: #D9DADD;
+  --hp-blue: #9DD9F3;
+  --helmet-yellow: #F4D35E;
+  --track-grey: #686B70;
 }
 
 body{
   padding-top:80px;
   word-wrap:break-word;
-  font-family: 'Dosis', sans-serif ;
+  font-family: 'DM Sans', sans-serif ;
+  background: var(--light-white);
 }
 img{
   height: 200px;
 }
 
 h1, h2, h3{
-  font-family: 'Spectral', 'Times New Roman', Times, serif;
+  font-family: 'Racing Sans One', Georgia, 'Times New Roman', Times, serif;
 }

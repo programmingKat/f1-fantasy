@@ -1,0 +1,48 @@
+[
+    {
+        "team": "McLaren", 
+        "drivers" : ["Lando Norris", "Oscar Piastri"]
+    },
+    {
+        "team": "Mercedes", 
+        "drivers" : ["Kimi Antonelli", "George Russell"]
+    }, 
+    {
+        "team": "Red Bull Racing", 
+        "drivers" : ["Max Verstappen", "Isack Hadjar"]
+    }, 
+    {
+        "team": "Ferrari", 
+        "drivers" : ["Lewis Hamilton", "Charles Leclerc"]
+    }, 
+    {
+        "team": "Williams", 
+        "drivers" : ["Carlos Sainz", "Alex Albon"]
+    }, 
+    {
+        "team": "Racing Bulls", 
+        "drivers" : ["Liam Lawson", "Arvid Lindblad"]
+    }, 
+    {
+        "team": "Haas", 
+        "drivers" : ["Esteban Ocon", "Oliver Bearman"]
+    }, 
+    {
+        "team": "Audi", 
+        "drivers" : ["Nico Hülkenberg", "Gabriel Bortoleto"]
+    }, 
+    {
+        "team": "Alpine", 
+        "drivers" : ["Pierre Gasly", "Franco Colapinto"]
+    },
+    {
+        "team": "Aston Martin", 
+        "drivers" : ["Fernando Alonso", "Lance Stroll"]
+    },    
+    {
+        "team": "Cadillac", 
+        "drivers" : ["Sergio Pérez", "Valtteri Bottas"]
+    }
+]
+
+

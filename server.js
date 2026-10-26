@@ -4,7 +4,7 @@
 // get all the tools we need
 let express  = require('express');
 let app      = express();
-let port     = process.env.PORT || 8080;
+let port     = process.env.PORT || 3000;
 const {ObjectID} = require('mongodb') // same same - lower lev - write req in mongo
 let mongoose = require('mongoose'); // same same
 let passport = require('passport');

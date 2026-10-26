@@ -2,9 +2,15 @@
 <html>
 
 <head>
-    <title>Bookshelf</title>
+    <title>F1 Fantasy</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Racing+Sans+One&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -38,7 +44,7 @@
                 </div>
             </div>
             <div class="col-sm-6">
-                <h3>Your Books</h3>
+                <h3>Your Team</h3>
                 <ul class="messages">
                     <% for(var i=0; i<books.length; i++) {%>
                         <li class="message">
@@ -53,8 +59,8 @@
                             <span>
                                 <input type="range" class="rate" id="rating" name="rating" min="0" max="10" />
                             </span>
-                            <button class="trash"  data-book-id="<%= books[i]._id %>">🚮</button>
-                            
+                            <button class="trash" data-book-id="<%= books[i]._id %>">🚮</button>
+
                             <span>
                                 <%= books[i].rating %>
                             </span>
@@ -63,7 +69,7 @@
                         <% } %>
                 </ul>
 
-                <h2>Add a book</h2>
+                <h2>Create your team</h2>
                 <% if (user.local.email) { %>
 
                     <!-- Title
@@ -81,42 +87,72 @@
                     <form action="/myBooks" method="POST">
                         <input type="text" value="<%= user.local.email %>" name="name" hidden>
                         <fieldset>
-                            <legend>Basics !</legend>
-                            <input type="text" placeholder="Book Title" name="title">
-                            <input type="text" placeholder="Author" name="author">
+                            <legend>Pick your chassis !</legend>
+                            <select name="chassis" id="chassis-select">
+                                <option value="ferrari">Ferrari</option>
+                                <option value="mcLaren">McLaren</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="redBull">Red Bull Racing</option>
+                                <option value="williams">Williams</option>
+                                <option value="astonMartin">Aston Martin</option>
+                                <option value="racingBulls">Racing Bulls</option>
+                                <option value="audi">Audi</option>
+                                <option value="haas">Haas</option>
+                                <option value="alpine">Alpine</option>
+                                <option value="cadillac">Cadillac</option>
+                            </select>
                         </fieldset>
 
                         <fieldset>
-                            <legend>Progress</legend>
+                            <legend>Driver #1</legend>
+                            <label for="driver1Team">Choose Driver #1's Team</label>
+                            <select name="driver1Team" class="driver1Team" id="driver1Team">
+                                <option value="Ferrari">Ferrari</option>
+                                <option value="McLaren">McLaren</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Red Bull">Red Bull Racing</option>
+                                <option value="Williams">Williams</option>
+                                <option value="Aston Martin">Aston Martin</option>
+                                <option value="Racing Bulls">Racing Bulls</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Haas">Haas</option>
+                                <option value="Alpine">Alpine</option>
+                                <option value="Cadillac">Cadillac</option>
+                            </select>
+
+
                             <div>
-                                <input type="radio" id="notRead" name="progress" value="notRead" checked />
-                                <label for="notRead">Have not started reading</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="inProgress" name="progress" value="inProgress" />
-                                <label for="inProgress">Currently reading this</label>
+                                <input type="radio" name="driver1Option" value="driverA" />
+                                <label id="driver1OptionA" for="inProgress">Driver A</label>
                             </div>
 
                             <div>
-                                <input type="radio" id="read" name="progress" value="read" />
-                                <label for="read">Finished this book!</label>
+                                <input type="radio" name="driver1Option" value="driverB" />
+                                <label id="driver1OptionB" for="read">Driver B</label>
                             </div>
                         </fieldset>
+                    <fieldset>
+                            <legend>Driver #2</legend>
+                            <label for="driver2Team">Choose Driver #2's Team</label>
+                            <select name="driver2Team" class="driver2Team" id="driver2Team">
+                                <option value="Ferrari">Ferrari</option>
+                                <option value="McLaren">McLaren</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Red Bull">Red Bull Racing</option>
+                                <option value="Williams">Williams</option>
+                                <option value="Aston Martin">Aston Martin</option>
+                                <option value="Racing Bulls">Racing Bulls</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Haas">Haas</option>
+                                <option value="Alpine">Alpine</option>
+                                <option value="Cadillac">Cadillac</option>
+                            </select>
 
-                        <fieldset>
-                            <legend>Dates!</legend>
-                            <label for="startDate">Start Date!</label>
-                            <input type="date" id="startDate" name="startDate">
-                        </fieldset>
 
-                        <fieldset>
-                            <legend>Show off</legend>
-                            <div>
-                                <input type="checkbox" id="displayBook" name="displayBook" checked>
-                                <label for="displayBook">Display on bookshelf</label>
-                            </div>
-                        </fieldset>
-                    <!--  -->
+
+  
+
+                        
 
                         <button type="submit">Submit</button>
                     </form>
