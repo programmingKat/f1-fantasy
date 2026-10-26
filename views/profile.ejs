@@ -18,7 +18,7 @@
     <div class="container">
 
         <div class="page-header text-center">
-            <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+            <h1> Your F1 Fantasy Team 🏁 </h1>
             <a href="/logout" class="btn btn-default btn-sm">Logout</a>
         </div>
 
@@ -45,49 +45,40 @@
             </div>
             <div class="col-sm-6">
                 <h3>Your Team</h3>
-                <ul class="messages">
-                    <% for(var i=0; i<books.length; i++) {%>
-                        <li class="message">
+                <section class="messages">
+                    <% for(var i=0; i<teams.length; i++) {%>
+                        <div class="message">
 
-                            <span data-user-id="<%= books[i]._id %>">
-                                <%= books[i].title %>
+                            <span data-team-id="<%= teams[i]._id %>">
+                                Chassis: <%= teams[i].chassis %>
+                            </span>
+
+                            <span>
+                                Driver 1 Team: <%= teams[i].driver1Team %>
                             </span>
                             <span>
-                                <%= books[i].author %>
+                                Driver 1: <%= teams[i].driver1 %>
                             </span>
-
                             <span>
                                 <input type="range" class="rate" id="rating" name="rating" min="0" max="10" />
                             </span>
-                            <button class="trash" data-book-id="<%= books[i]._id %>">🚮</button>
+                            <button class="trash" data-team-id="<%= teams[i]._id %>">🚮</button>
 
                             <span>
-                                <%= books[i].rating %>
+                                <%= teams[i].tires %>
                             </span>
                             <!-- </i> -->
-                        </li>
+                        </div>
                         <% } %>
-                </ul>
+                </section>
 
                 <h2>Create your team</h2>
                 <% if (user.local.email) { %>
 
-                    <!-- Title
-                    	Author
-                    	ISBN - Optional
-                    	Date started
-                        Status - Not read , In Progress, Finished
-                    	
-                    	Genre
-                    
-                        in update:
-                    	Rating  1/10 or 1-5? -->
-                    <!-- Date Finished -->
-
-                    <form action="/myBooks" method="POST">
+                    <form action="/myTeam" method="POST">
                         <input type="text" value="<%= user.local.email %>" name="name" hidden>
                         <fieldset>
-                            <legend>Pick your chassis !</legend>
+                            <legend>🏎️ Pick your chassis !</legend>
                             <select name="chassis" id="chassis-select">
                                 <option value="ferrari">Ferrari</option>
                                 <option value="mcLaren">McLaren</option>
@@ -121,17 +112,22 @@
                             </select>
 
 
-                            <div>
-                                <input type="radio" name="driver1Option" value="driverA" />
-                                <label id="driver1OptionA" for="inProgress">Driver A</label>
+                            <div class="drivers">
+                                <input id ="driver1OptionAbttn" type="radio" name="driver1" value="driverA" />
+                                <label id="driver1OptionA" for="inProgress">
+                                    Driver A
+                                </label>
+                            
                             </div>
 
-                            <div>
-                                <input type="radio" name="driver1Option" value="driverB" />
-                                <label id="driver1OptionB" for="read">Driver B</label>
+                            <div class="drivers">
+                                <input id ="driver1OptionBbttn" type="radio" name="driver1" value="driverB" />
+                                <label id="driver1OptionB" for="read">
+                                    Driver B
+                                </label>
                             </div>
                         </fieldset>
-                    <fieldset>
+                        <fieldset>
                             <legend>Driver #2</legend>
                             <label for="driver2Team">Choose Driver #2's Team</label>
                             <select name="driver2Team" class="driver2Team" id="driver2Team">
@@ -148,13 +144,17 @@
                                 <option value="Cadillac">Cadillac</option>
                             </select>
 
+                            <div class = 'drivers'>
+                                <input type="radio" id="driver2OptionAbttn" name="driver2" value="driverA" />
+                                <label id="driver2OptionA" for="driver2OptionAbttn">Driver A</label>
+                            </div>
 
+                            <div class = 'drivers'>
+                                <input type="radio" id="driver2OptionBbttn" name="driver2" value="driverB" />
+                                <label id="driver2OptionB" for="driver2OptionBbttn">Driver B</label>
+                            </div>
 
-  
-
-                        
-
-                        <button type="submit">Submit</button>
+                            <button type="submit" id="submit-form">Submit</button>
                     </form>
             </div>
             <% } %>

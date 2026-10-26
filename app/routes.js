@@ -10,11 +10,11 @@ module.exports = function (app, passport, db, ObjectID) {
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function (req, res) {
 
-    db.collection('books').find().toArray((err, result) => {
+    db.collection('teams').find().toArray((err, result) => {
       if (err) return console.log(err)
       res.render('profile.ejs', {
         user: req.user,
-        books: result
+        teams: result
       })
     })
   });
@@ -29,16 +29,15 @@ module.exports = function (app, passport, db, ObjectID) {
 
   // message board routes ===============================================================
   // match to what is being posted in messages
-  app.post('/myBooks', (req, res) => {
-    console.log(req)
-    db.collection('books').save({
-      name: req.body.name,
-      title: req.body.title,
-      author: req.body.author,
-      progress: req.body.progress,
-      startDate: req.body.startDate,
-      displayBook: req.body.displayBook,
-      rating: 0, 
+  app.post('/myTeam', (req, res) => {
+    console.log(req.body)
+    db.collection('teams').save({
+      chassis: req.body.chassis,
+      driver1Team: req.body.driver1Team,
+      driver1: req.body.driver1,
+      driver2Team: req.body.driver2Team,
+      driver2: req.body.driver2,
+      tires: 0, 
     }, (err, result) => {
       if (err) return console.log(err)
       console.log('saved to database')
@@ -46,48 +45,12 @@ module.exports = function (app, passport, db, ObjectID) {
     })
   })
 
-  app.put('/thumbUp', (req, res) => {
-    console.log(req.body, "body")
-    console.log(req.body.id, "req.body.id")
-    console.log(req.body.id, "req.body.rating")
-    db.collection('books')
-      .findOneAndUpdate({ 
-        _id: new ObjectID(req.body.id)
-      }, {
-        $set: {
-          rating: Number(req.body.rating), 
-        }
-      }, {
-        sort: { _id: -1 },
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-  })
 
-    app.put('/thumbDown', (req, res) => {
-    db.collection('books')
-      .findOneAndUpdate({ 
-        _id: new ObjectID(req.body.id)
-      }, {
-        $inc: {
-          thumbUp: -1
-        }
-      }, {
-        sort: { _id: -1 },
-        upsert: true
-      }, (err, result) => {
-        if (err) return res.send(err)
-        res.send(result)
-      })
-  })
 
-  app.delete('/myBooks', (req, res) => {
-
-    console.log(req.body.bookId)
-    db.collection('books').findOneAndDelete({ 
-      _id: new ObjectID(req.body.bookId) 
+  app.delete('/myTeam', (req, res) => {
+    console.log("req.body.teamId",req.body.teamId)
+    db.collection('teams').findOneAndDelete({ 
+      _id: new ObjectID(req.body.teamId) 
     }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
