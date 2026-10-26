@@ -26,8 +26,9 @@
 
 ## Future improvements
 
+*Need to render Driver 2 values / pass to EJS
 *Edit the CSS - fix formatting & make semantic adjustments to HTML
-** Create cards for each team created
+* Create cards for each team created
 * Track wins (podium or points) for each driver
 * Get points for correct tire selection
 * Display Team creator username on the card
@@ -39,5 +40,6 @@
 
 <img width="1826" height="797" alt="image" src="https://github.com/user-attachments/assets/8941f934-5a46-435c-8094-c9ad70431dbc" />
 <img width="477" height="505" alt="image" src="https://github.com/user-attachments/assets/2326185f-018f-44ab-84c6-c030be7621a1" />
+<img width="725" height="666" alt="image" src="https://github.com/user-attachments/assets/f0ef2453-760a-4bfd-a515-2530b6008174" />
 
 
