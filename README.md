@@ -12,7 +12,7 @@
 
 ## How to Use
 
-1. Check out the [F1 Fantasy](https://picky-v3j9.onrender.com/).
+1. Check out the [F1 Fantasy](https://f1-fantasy-s57q.onrender.com).
 2. Create an account if it is your first time logging in!
 3. Sign in once you sign up
 4. Create your team by choosing the following
